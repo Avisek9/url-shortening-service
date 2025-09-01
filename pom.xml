@@ -50,14 +50,18 @@
             <optional>true</optional>
         </dependency>
 
+        <!-- Google Guava for hashing utilities -->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
+            <version>32.1.2-jre</version>
         </dependency>
 
+        <!-- Apache Commons Lang for DigestUtils and other utilities -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
+            <version>3.13.0</version>
         </dependency>
 
         <dependency>

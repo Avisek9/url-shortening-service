@@ -40,17 +40,17 @@ public class UrlShorteningController {
 
     @GetMapping("/{shortLink}")
     public ResponseEntity<?> redirectToOriginalUrl(@PathVariable String shortLink, HttpServletResponse response) throws IOException {
-        if(StringUtils.isNotEmpty(shortLink)){
+        if(StringUtils.isEmpty(shortLink)){
             UrlErrorResponseDto urlErrorResponseDto = new UrlErrorResponseDto();
             urlErrorResponseDto.setError("Invalid Url");
-            urlErrorResponseDto.setStatus("400");
+            urlErrorResponseDto.setStatus("404");
             return new ResponseEntity<UrlErrorResponseDto>(urlErrorResponseDto, HttpStatus.OK);
         }
         Url urlToRet = urlService.getEncodedUrl(shortLink);
         if(urlToRet == null){
             UrlErrorResponseDto urlErrorResponseDto = new UrlErrorResponseDto();
             urlErrorResponseDto.setError("Url doesn't exist or it might have expired");
-            urlErrorResponseDto.setStatus("400");
+            urlErrorResponseDto.setStatus("404");
             return new ResponseEntity<UrlErrorResponseDto>(urlErrorResponseDto, HttpStatus.OK);
         }
         if(urlToRet.getExpirationDate().isBefore(LocalDateTime.now())){

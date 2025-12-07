@@ -53,8 +53,11 @@ Follow the steps below to run this project locally.
 ### Application Setup
 
 git clone https://github.com/Avisek9/url-shortening-service.git
+
 cd url-shortening-service 
+
 mvn clean install  
+
 mvn spring-boot:run  
 
 The application will start on:
